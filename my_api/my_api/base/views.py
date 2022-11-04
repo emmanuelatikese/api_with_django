@@ -31,16 +31,14 @@ def details_task(request, pk):
 def create_task(request):
 	task = Task.objects.all()
 	serial = TaskSerializer(data=request.data)
-	if serial.is_valid():
-		serial.save()
+	if serial.is_valid():serial.save()
 	return Response(serial.data)
 
 @api_view(['POST'])
 def update_list(request, pk):
 	task = Task.objects.get(id=pk)
 	serial = TaskSerializer(instance=task, data = request.data)
-	if serial.is_valid():
-		serial.save()
+	if serial.is_valid():serial.save()
 	return Response(serial.data)
 
 @api_view(['DELETE'])
